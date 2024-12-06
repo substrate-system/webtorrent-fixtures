@@ -15,7 +15,10 @@
     "lint": "eslint \"./**/*.{ts,js}\"",
     "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-esm && mkdir -p ./dist/fixtures && cp -r ./fixtures/* ./dist/fixtures",
     "build-esm": "esbuild src/*.ts --format=esm --metafile=dist/meta.json --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --sourcemap && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
-    "test": "npm run lint && npm run build && node --input-type=module -e \"import './dist/index.js'\""
+    "test": "npm run lint && npm run build && node --input-type=module -e \"import './dist/index.js'\"",
+    "version": "auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md README.md",
+    "postversion": "git push --follow-tags && npm publish",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "parse-torrent": "^11.0.0"
