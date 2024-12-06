@@ -1,29 +1,36 @@
 {
-  "name": "webtorrent-fixtures",
-  "description": "Sample torrent files for the WebTorrent test suite",
+  "name": "@substrate-system/webtorrent-fixtures",
   "version": "2.0.2",
-  "author": {
-    "name": "WebTorrent, LLC",
-    "email": "feross@webtorrent.io",
-    "url": "https://webtorrent.io"
-  },
-  "browserify": {
-    "transform": [
-      "brfs"
-    ]
-  },
-  "bugs": {
-    "url": "https://github.com/webtorrent/webtorrent-fixtures/issues"
-  },
+  "description": "Sample torrent files for the WebTorrent test suite",
   "type": "module",
+  "files": [
+    "./dist/*"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "lint": "eslint \"./**/*.{ts,js}\"",
+    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-esm && mkdir -p ./dist/fixtures && cp -r ./fixtures/* ./dist/fixtures",
+    "build-esm": "esbuild src/*.ts --format=esm --metafile=dist/meta.json --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --sourcemap && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
+    "test": "npm run lint && npm run build && node --input-type=module -e \"import './dist/index.js'\""
+  },
   "dependencies": {
-    "brfs": "^2.0.0",
     "parse-torrent": "^11.0.0"
   },
   "devDependencies": {
-    "@webtorrent/semantic-release-config": "1.0.10",
-    "semantic-release": "21.1.2",
-    "standard": "*"
+    "@types/node": "^22.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "auto-changelog": "^2.5.0",
+    "esbuild": "^0.24.0",
+    "eslint": "^8.57.1",
+    "eslint-config-standard": "^17.1.0",
+    "markdown-toc": "^1.2.0",
+    "parse-torrent": "11.0.17",
+    "typescript": "^5.7.2"
   },
   "keywords": [
     "sample torrents",
@@ -34,26 +41,17 @@
     "webtorrent",
     "webtorrent test"
   ],
-  "license": "MIT",
-  "engines": {
-    "node": ">=12.20.0"
-  },
-  "exports": {
-    "import": "./index.js"
-  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/webtorrent/webtorrent-fixtures.git"
+    "url": "git://github.com/substrate-system/webtorrent-fixtures.git"
   },
-  "scripts": {
-    "test": "standard && node --input-type=module -e \"import './index.js'\""
+  "author": {
+    "name": "WebTorrent, LLC",
+    "email": "feross@webtorrent.io",
+    "url": "https://webtorrent.io"
   },
-  "renovate": {
-    "extends": [
-      "github>webtorrent/renovate-config"
-    ]
+  "bugs": {
+    "url": "https://github.com/substrate-system/webtorrent-fixtures/issues"
   },
-  "release": {
-    "extends": "@webtorrent/semantic-release-config"
-  }
+  "license": "MIT"
 }
