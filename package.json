@@ -53,6 +53,13 @@
     "email": "feross@webtorrent.io",
     "url": "https://webtorrent.io"
   },
+  "contributors": [
+    {
+      "name": "Nick Thomas",
+      "email": "nichoth@nichoth.com",
+      "url": "https://nichoth.com/"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/substrate-system/webtorrent-fixtures/issues"
   },
