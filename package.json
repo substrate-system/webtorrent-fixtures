@@ -13,9 +13,9 @@
   },
   "scripts": {
     "lint": "eslint \"./**/*.{ts,js}\"",
-    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-esm && mkdir -p ./dist/fixtures && cp -r ./fixtures/* ./dist/fixtures",
+    "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-esm && mkdir -p ./dist/fixtures && cp -r ./src/fixtures/* ./dist/fixtures",
     "build-esm": "esbuild src/*.ts --format=esm --metafile=dist/meta.json --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --sourcemap && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
-    "test": "npm run lint && npm run build && node --input-type=module -e \"import './dist/index.js'\"",
+    "test": "npm run lint && npm run build && esbuild ./test/index.ts --format=esm --platform=node > test/index.js && node ./test/index.js",
     "version": "auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md README.md",
     "postversion": "git push --follow-tags && npm publish",
     "prepublishOnly": "npm run build"
@@ -24,6 +24,7 @@
     "parse-torrent": "^11.0.0"
   },
   "devDependencies": {
+    "@substrate-system/tapzero": "^0.10.5",
     "@types/node": "^22.10.1",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
     "@typescript-eslint/parser": "^8.17.0",
