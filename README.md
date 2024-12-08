@@ -4,6 +4,9 @@
 [![install size](https://flat.badgen.net/packagephobia/install/@substrate-system/webtorrent-fixtures?cache-control=no-cache)](https://packagephobia.com/result?p=@substrate-system/webtorrent-fixtures)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
+<details><summary><h2>Contents</h2></summary>
+<!-- toc -->
+</details>
 
 ## Sample torrent files for the WebTorrent test suite
 
@@ -18,8 +21,15 @@ npm i -S @substrate-system/webtorrent-fixtures
 ## Usage
 
 ```js
-import fixtures from 'webtorrent-fixtures'
+import fixtures from '@substrate-system/webtorrent-fixtures'
 console.log(fixtures.leaves)
+```
+
+## Inline
+If you need to bundle your test files, use the inline version. All buffers are exposed as base64 strings.
+
+```js
+import fixtures from '@substrate-system/webtorrent-fixtures/inline'
 ```
 
 ## License
