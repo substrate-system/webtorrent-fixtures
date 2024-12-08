@@ -26,10 +26,17 @@ console.log(fixtures.leaves)
 ```
 
 ## Inline
-If you need to bundle your test files, use the inline version. All buffers are exposed as base64 strings.
+If you need to bundle your test files, use the inline version. Buffers are exposed as base64 strings.
 
 ```js
 import fixtures from '@substrate-system/webtorrent-fixtures/inline'
+```
+
+### revive
+To parse the base64 string exposed as inline fixtures, use the `revive` function:
+
+```js
+import { revive } from '@substrate-system/webtorrent-fixtures/inline'
 ```
 
 ## License
