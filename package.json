@@ -16,6 +16,7 @@
     "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-esm && mkdir -p ./dist/fixtures && cp -r ./src/fixtures/* ./dist/fixtures",
     "build-esm": "esbuild src/*.ts --format=esm --metafile=dist/meta.json --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --sourcemap && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
     "test": "npm run lint && npm run build && esbuild ./test/index.ts --format=esm --platform=node > test/index.js && node ./test/index.js",
+    "preversion": "npm run lint",
     "version": "auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md README.md",
     "postversion": "git push --follow-tags && npm publish",
     "prepublishOnly": "npm run build"
