@@ -1,6 +1,6 @@
 {
   "name": "@substrate-system/webtorrent-fixtures",
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "Sample torrent files for the WebTorrent test suite",
   "type": "module",
   "files": [
@@ -9,13 +9,17 @@
   "exports": {
     ".": {
       "import": "./dist/index.js"
+    },
+    "./inline": {
+      "import": "./dist/base64.js"
     }
   },
   "scripts": {
     "lint": "eslint \"./**/*.{ts,js}\"",
     "build": "mkdir -p ./dist && rm -rf ./dist/* && npm run build-esm && mkdir -p ./dist/fixtures && cp -r ./src/fixtures/* ./dist/fixtures",
     "build-esm": "esbuild src/*.ts --format=esm --metafile=dist/meta.json --keep-names --tsconfig=tsconfig.build.json --outdir=./dist --sourcemap && tsc --emitDeclarationOnly --project tsconfig.build.json --outDir dist",
-    "test": "npm run lint && npm run build && esbuild ./test/index.ts --format=esm --platform=node > test/index.js && node ./test/index.js",
+    "test": "npm run lint && npm run build && esbuild ./test/index.ts --sourcemap --format=esm --platform=node > test/index.js && node ./test/index.js | tap-spec",
+    "toc": "markdown-toc --maxdepth 3 -i README.md",
     "preversion": "npm run lint",
     "version": "auto-changelog -p --template keepachangelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md README.md",
     "postversion": "git push --follow-tags && npm publish",
@@ -35,7 +39,9 @@
     "eslint-config-standard": "^17.1.0",
     "markdown-toc": "^1.2.0",
     "parse-torrent": "11.0.17",
-    "typescript": "^5.7.2"
+    "tap-spec": "^5.0.0",
+    "typescript": "^5.7.2",
+    "uint8arrays": "^5.1.0"
   },
   "keywords": [
     "sample torrents",

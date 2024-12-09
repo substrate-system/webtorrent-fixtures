@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-export default {
+export const fixtures = {
     // Leaves of Grass, by Walt Whitman
     leaves: {
         contentPath: path.join(__dirname, 'fixtures', 'Leaves of Grass by Walt Whitman.epub'),
@@ -97,3 +97,5 @@ export default {
         gzipPath: path.join(__dirname, 'fixtures', 'blocklist.txt.gz')
     }
 }
+
+export default fixtures
