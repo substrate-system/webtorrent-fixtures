@@ -33,10 +33,14 @@ import fixtures from '@substrate-system/webtorrent-fixtures/inline'
 ```
 
 ### revive
-To parse the base64 string exposed as inline fixtures, use the `revive` function:
+To parse the JSON string, use the `revive` function. This will convert all `base64` string to Buffer objects.
 
 ```js
-import { revive } from '@substrate-system/webtorrent-fixtures/inline'
+import base64Fixtures, { 
+    revive
+} from '@substrate-system/webtorrent-fixtures/inline'
+
+const torrent = revive(base64Fixtures.leaves.parsedTorrent)
 ```
 
 ## License
