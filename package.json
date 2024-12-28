@@ -1,6 +1,6 @@
 {
   "name": "@substrate-system/webtorrent-fixtures",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "Sample torrent files for the WebTorrent test suite",
   "type": "module",
   "files": [
