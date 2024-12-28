@@ -27,7 +27,6 @@ export const keys = ['infoHashBuffer', 'infoBuffer']
 
 if (args.includes('--parse')) {
     const parsed = await parseTorrent(buffer)
-    console.log('ppppppppppppppppppppppppp', parsed)
     // parsed is now an object
     console.log(JSON.stringify(parsed, function (k, v) {
         // stringify it, and convert buffers to `base64` strings

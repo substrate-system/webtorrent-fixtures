@@ -57,6 +57,12 @@ export const fixtures = {
         contentPath: path.join(__dirname, 'fixtures', 'Leaves of Grass by Walt Whitman.epub'),
         parsedTorrent: parsedTorrent(),
         torrentPath: path.join(__dirname, 'fixtures', 'leaves.torrent'),
+    },
+
+    folder: {
+        torrent: 'ZDEzOmNyZWF0aW9uIGRhdGVpMTQ0OTczMDA0OTQyOWU4OmVuY29kaW5nNTpVVEYtODQ6aW5mb2Q1OmZpbGVzbGQ2Omxlbmd0aGkxNWU0OnBhdGhsODpmaWxlLnR4dGVlZTQ6bmFtZTY6Zm9sZGVyMTI6cGllY2UgbGVuZ3RoaTE2Mzg0ZTY6cGllY2VzMjA6eZwR40jTnxcEAiuDVFAuL4HzwDdlZQ==',
+        contentPath: path.join(__dirname, 'fixtures', 'folder')
+        parsedTorrent: 
     }
 }
 
@@ -68,7 +74,7 @@ export default fixtures
  *
  * Must use the included `revive` function.
  */
-function parsedTorrent () {
+function parsedTorrent ():string {
     return JSON.stringify({
         info: {
             length: 362017,
