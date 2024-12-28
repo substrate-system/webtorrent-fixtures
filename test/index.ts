@@ -13,15 +13,16 @@ test('inline fixtures', t => {
 })
 
 test('revive the fixture', t => {
-    console.log('the json.....', base64Fixtures.leaves.parsedTorrent)
+    // console.log('the json.....', base64Fixtures.leaves.parsedTorrent)
+    t.ok(base64Fixtures.leaves.contentPath, 'should have contentPath')
     const obj = JSON.parse(base64Fixtures.leaves.parsedTorrent, _revive)
-    console.log('the object', obj)
+    // console.log('the object', obj)
     t.ok(obj, 'should return something')
-
     t.ok(obj.info.name instanceof Uint8Array, 'should revive to binary')
 })
 
 test('revive the fixture from a string', t => {
     const data = revive(base64Fixtures.leaves.parsedTorrent)
-    t.ok(data.info.name instanceof Uint8Array, 'should revive the object')
+    t.ok(data.info.name as any instanceof Uint8Array,
+        'should revive the object')
 })
