@@ -61,12 +61,61 @@ export const fixtures = {
 
     folder: {
         torrent: 'ZDEzOmNyZWF0aW9uIGRhdGVpMTQ0OTczMDA0OTQyOWU4OmVuY29kaW5nNTpVVEYtODQ6aW5mb2Q1OmZpbGVzbGQ2Omxlbmd0aGkxNWU0OnBhdGhsODpmaWxlLnR4dGVlZTQ6bmFtZTY6Zm9sZGVyMTI6cGllY2UgbGVuZ3RoaTE2Mzg0ZTY6cGllY2VzMjA6eZwR40jTnxcEAiuDVFAuL4HzwDdlZQ==',
-        contentPath: path.join(__dirname, 'fixtures', 'folder')
-        parsedTorrent: 
+        contentPath: path.join(__dirname, 'fixtures', 'folder'),
+        parsedTorrent: parsedFolder(),
+        torrentPath: path.join(__dirname, 'fixtures', 'folder.torrent'),
     }
 }
 
 export default fixtures
+
+function parsedFolder () {
+    return {
+        info: {
+            files: [
+                {
+                    length: 15,
+                    path: [
+                        {
+                            0: 102,
+                            1: 105,
+                            2: 108,
+                            3: 101,
+                            4: 46,
+                            5: 116,
+                            6: 120,
+                            7: 116
+                        }
+                    ]
+                }
+            ],
+            name: 'Zm9sZGVy',
+            'piece length': 16384,
+            pieces: 'eZwR40jTnxcEAiuDVFAuL4HzwDc'
+        },
+        infoBuffer: 'ZDU6ZmlsZXNsZDY6bGVuZ3RoaTE1ZTQ6cGF0aGw4OmZpbGUudHh0ZWVlNDpuYW1lNjpmb2xkZXIxMjpwaWVjZSBsZW5ndGhpMTYzODRlNjpwaWVjZXMyMDp5nBHjSNOfFwQCK4NUUC4vgfPAN2U',
+        name: 'folder',
+        announce: [],
+        infoHashBuffer: 'uI2iyqxmSObH12h+P4kIX34jDms',
+        infoHash: 'b88da2caac6648e6c7d7687e3f89085f7e230e6b',
+        created: '+047910-02-12T23:30:29.000Z',
+        urlList: [],
+        files: [
+            {
+                path: 'folder/file.txt',
+                name: 'file.txt',
+                length: 15,
+                offset: 0
+            }
+        ],
+        length: 15,
+        pieceLength: 16384,
+        lastPieceLength: 15,
+        pieces: [
+            '799c11e348d39f1704022b8354502e2f81f3c037'
+        ]
+    }
+}
 
 /**
  * This is a JSON stringified obejct where any buffer keys have been

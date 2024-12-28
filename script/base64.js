@@ -16,10 +16,7 @@ if (args.length < 1) throw new Error('Missing fixture file name')
 const pathname = args[0]
 const filename = pathname.split('/').pop()
 
-// console.log('filename', filename)
-
 // Read the file as a buffer
-// console.log('full path', path.join(__dirname, '..', 'src', 'fixtures'))
 const fixturePath = path.join(__dirname, '..', 'src', 'fixtures')
 const buffer = fs.readFileSync(path.join(fixturePath, filename))
 
