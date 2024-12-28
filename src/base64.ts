@@ -1,5 +1,6 @@
 // Torrent and content test files. Content is Public Domain or Creative Commons.
 import path from 'path'
+import type { ParsedTorrent } from './index.js'
 import { fileURLToPath } from 'node:url'
 import { fromString } from 'uint8arrays'
 const __filename = fileURLToPath(import.meta.url)
@@ -9,7 +10,7 @@ const __dirname = path.dirname(__filename)
  * Take a string of JSON, handle the base64 buffers inside.
  * @returns a parsed torrent
  */
-export function revive (torrentJSON:string):object {
+export function revive (torrentJSON:string):ParsedTorrent {
     const torrent = JSON.parse(torrentJSON, _revive)
     return torrent
 }

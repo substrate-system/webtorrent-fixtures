@@ -6,6 +6,42 @@ import { fileURLToPath } from 'node:url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+export type ParsedTorrent = {
+    name:string;
+    path?:string;
+    announce:string|string[];
+    private?:boolean;
+    created:Date;
+    createdBy:string;
+    infoHash:string;
+    infoBuffer:Uint8Array;
+    infoHashBuffer:Uint8Array;
+    magnetURI:string;
+    urlList:string[];
+    'creation date':number;
+    'created by':string;
+    comment:string|ArrayBufferView;
+    length:number;
+    files:(File[]|Blob[]) & {
+        path:string;
+        downloaded;
+        done:boolean;
+        name:string;
+        length:number;
+        offset:number;
+    }[];
+    info: {
+        files:{ length:number; path?:string; 'path.utf-8'?:string }[];
+        name:string;
+        'piece length':number;
+        pieces:any[];
+        private?:boolean;
+    };
+    pieceLength:number;
+    lastPieceLength:number;
+    pieces:any[];
+}
+
 export const fixtures = {
     // Leaves of Grass, by Walt Whitman
     leaves: {
