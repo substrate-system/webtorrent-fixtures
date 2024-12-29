@@ -70,7 +70,7 @@ export const fixtures = {
 export default fixtures
 
 function parsedFolder () {
-    return {
+    return JSON.stringify({
         info: {
             files: [
                 {
@@ -114,7 +114,7 @@ function parsedFolder () {
         pieces: [
             '799c11e348d39f1704022b8354502e2f81f3c037'
         ]
-    }
+    })
 }
 
 /**
